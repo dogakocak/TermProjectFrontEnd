@@ -1,0 +1,45 @@
+.homepage-container {
+    display: flex;
+    height: 100vh; /* 100 viewport height, yani ekranın tamamını kapla */
+}
+
+.sidebar {
+    width: 300px;
+    background-color: #7C93C3;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Yan menüye hafif bir gölge ekledik */
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+}
+
+.input{
+    display: flex;
+    align-items: center;
+    margin: auto;
+    width: fit-content;
+    height: auto;
+    background: white;
+    border-radius: 6px;
+}
+
+.button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 59px;
+    color: white;
+    background: #A25772;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    border-radius: 40px;
+    cursor: pointer;
+}
+
+.button:hover{
+    background-color: #602439;
+}
