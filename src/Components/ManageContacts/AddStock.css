@@ -34,11 +34,44 @@
     background: #A25772;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 115px;
+    margin-top: 15px;
     border-radius: 40px;
     cursor: pointer;
 }
 
 .add-c-container:hover{
     background-color: #602439;
+}
+
+.search-container {
+    position: relative;
+    width: 300px; /* Ölçüleri ihtiyacınıza göre ayarlayabilirsiniz */
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: max-content;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-result-item {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #f0f0f0;
+    }
 }

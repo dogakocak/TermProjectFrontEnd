@@ -13,7 +13,7 @@ function Card({ userData }) {
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json',
-                'Authorization': 'Bearer ' + Cookies.get("bearerToken"),
+                'Authorization': 'Bearer ' + sessionStorage.getItem("accessToken"),
             },
         })
             .then(response => {

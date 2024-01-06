@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Login from './Components/Login/Login';
 import Homepage from './Components/Homepage/Homepage';
-import AddContact from './Components/ManageContacts/AddContact';
+import AddStock from './Components/ManageContacts/AddStock';
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -23,7 +23,7 @@ function App() {
             {isLoggedIn ? (
                 <>
                     <Route path="/" element={<Homepage onLogout={handleLogout} />} />
-                    <Route path="/add-contact" element={<AddContact onLogout={handleLogout} />} />
+                    <Route path="/add-contact" element={<AddStock onLogout={handleLogout} />} />
                 </>
             ) : (
                 <Route path="/*" element={<Navigate to="/login" />} />
