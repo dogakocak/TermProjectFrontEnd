@@ -18,8 +18,10 @@ const AddStock = ({ onLogout }) => {
     };
 
     const handleAddStock = async () => {
+        console.log("trigger");
         try {
             const accessToken = sessionStorage.getItem('accessToken');
+            console.log(accessToken);
             if (!accessToken) {
                 console.error('Access token not found in sessionStorage');
                 return;
@@ -36,13 +38,25 @@ const AddStock = ({ onLogout }) => {
             });
 
             if (response.ok) {
-                console.log('Stock added successfully!');
+                showAlert('Stock added successfully!', 'success');
             } else {
                 console.error('Failed to add stock:', response.statusText);
             }
         } catch (error) {
             console.error('Error:', error);
         }
+    };
+
+    const showAlert = (message, type) => {
+        const alertDiv = document.createElement('div');
+        alertDiv.className = `alert ${type}`;
+        alertDiv.innerHTML = message;
+
+        document.body.appendChild(alertDiv);
+
+        setTimeout(() => {
+            document.body.removeChild(alertDiv);
+        }, 2000);
     };
 
 
