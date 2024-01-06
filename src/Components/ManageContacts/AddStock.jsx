@@ -21,7 +21,6 @@ const AddStock = ({ onLogout }) => {
         console.log("trigger");
         try {
             const accessToken = sessionStorage.getItem('accessToken');
-            console.log(accessToken);
             if (!accessToken) {
                 console.error('Access token not found in sessionStorage');
                 return;
@@ -40,10 +39,12 @@ const AddStock = ({ onLogout }) => {
             if (response.ok) {
                 showAlert('Stock added successfully!', 'success');
             } else {
-                console.error('Failed to add stock:', response.statusText);
+                const jsonResponse = await response.json();
+                console.log(jsonResponse);
+                showAlert(`${jsonResponse.error.message}`);
             }
         } catch (error) {
-            console.error('Error:', error);
+            showAlert(`Error: ${error.message}`, 'error');
         }
     };
 
@@ -52,10 +53,12 @@ const AddStock = ({ onLogout }) => {
         alertDiv.className = `alert ${type}`;
         alertDiv.innerHTML = message;
 
-        document.body.appendChild(alertDiv);
+        // Assuming you have a container element to hold your alerts
+        const alertContainer = document.getElementById('alert-container');
+        alertContainer.appendChild(alertDiv);
 
         setTimeout(() => {
-            document.body.removeChild(alertDiv);
+            alertContainer.removeChild(alertDiv);
         }, 2000);
     };
 
@@ -124,6 +127,7 @@ const AddStock = ({ onLogout }) => {
             <Sidebar onLogout={handleLogout} />
             <div className='content'>
                 <div className='cards'>
+                    <div id="alert-container"></div>
                     <div className='card'>
                         <img src={profile_photo} alt='Profile' />
                         <div className='card-content'>
@@ -149,10 +153,11 @@ const AddStock = ({ onLogout }) => {
                                 </div>
                             </div>
                         </div>
-                        <div className='add-c-container'>
-                            <div className='add-c' onClick={handleAddStock}>Add</div>
+                        <div className='add-c-container' onClick={() => handleAddStock()}>
+                            <div className='add-c'>Add</div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
