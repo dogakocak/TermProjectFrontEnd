@@ -68,3 +68,11 @@
     background-color: #f44336; /* Kırmızı renk */
     color: white;
 }
+
+
+.admin-panel{
+    text-decoration: none;
+    color: #fdcc09;
+    font-weight: bold;
+
+}
