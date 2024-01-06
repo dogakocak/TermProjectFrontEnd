@@ -52,3 +52,19 @@
 .add-container{
     text-decoration: none;
 }
+
+.alert {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+.success {
+    background-color: #4CAF50; /* Yeşil renk */
+    color: white;
+}
+
+.error {
+    background-color: #f44336; /* Kırmızı renk */
+    color: white;
+}
