@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
-import Login from "./Components/Login/Login";
-import Homepage from "./Components/Homepage/Homepage";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from 'react-router-dom';
+import Login from './Components/Login/Login';
+import Homepage from './Components/Homepage/Homepage';
+import AddContact from './Components/ManageContacts/AddContact';
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -19,11 +19,14 @@ function App() {
 
     return (
         <Routes>
-            <Route path='/login' element={<Login onLogin={handleLogin} />} />
+            <Route path="/login" element={<Login onLogin={handleLogin} />} />
             {isLoggedIn ? (
-                <Route path='/*' element={<Homepage onLogout={handleLogout} />} />
+                <>
+                    <Route path="/" element={<Homepage onLogout={handleLogout} />} />
+                    <Route path="/add-contact" element={<AddContact onLogout={handleLogout} />} />
+                </>
             ) : (
-                <Route path='/*' element={<Navigate to='/login' />} />
+                <Route path="/*" element={<Navigate to="/login" />} />
             )}
         </Routes>
     );
