@@ -1,7 +1,17 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './UserList.css'
 
 const UserList = ({users}) => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [changePasswordEmail, setChangePasswordEmail] = useState("");
+    const [newPassword, setNewPassword] = useState("");
+    const handleOpenModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+    };
     const showAlert = (message, type) => {
         const alertDiv = document.createElement('div');
         alertDiv.className = `alert ${type}`;
@@ -45,7 +55,37 @@ const UserList = ({users}) => {
             showAlert(`Error: ${error.message}`, 'error');
         }
     };
-    const handleChangePassword = (email) => {};
+    const handleChangePassword = async (event) => {
+        try{
+            const accessToken = sessionStorage.getItem('accessToken');
+            if(accessToken){
+                const apiUrl = 'https://localhost:7250/api/Admin/ChangePassword';
+                const response = await fetch(apiUrl,{
+                    method: 'POST',
+                    headers: {
+                        "Content-Type": "application/json",
+                        'accept': '*/*',
+                        'Authorization': `Bearer ${accessToken}`
+                    },
+                    body:JSON.stringify({
+                        email:changePasswordEmail,
+                        newPassword:newPassword
+                    })
+                });
+                if(response.ok){
+                    showAlert(`Successfully changed password for ${changePasswordEmail}`,'success');
+                }
+                else {
+                    const jsonResponse = await response.json();
+                    console.log(jsonResponse);
+                    showAlert(`${jsonResponse}`,'error');
+                }
+            }
+        }
+        catch (error){
+            showAlert(`Error: ${error.message}`, 'error');
+        }
+    };
     const handleDeleteUser = async (email) => {
         try{
             const accessToken = sessionStorage.getItem('accessToken');
@@ -86,14 +126,33 @@ const UserList = ({users}) => {
                     <button onClick={() => handleAppointAdmin(user.email)}>
                         Appoint Admin
                     </button>
-                    <button onClick={() => handleChangePassword(user.email)}>
-                        Change Password
-                    </button>
                     <button onClick={() => handleDeleteUser(user.email)}>
                         Delete User
                     </button>
                 </div>
             ))}
+            <div className="admin-change-password">
+                <h1 className="header1">Change Password</h1>
+                <div className="input-box">
+                    <input
+                        type="text"
+                        placeholder="Email"
+                        required
+                        value={changePasswordEmail}
+                        onChange={(e) => setChangePasswordEmail(e.target.value)}
+                    />
+                </div>
+                <div className="input-box">
+                    <input
+                        type="password"
+                        placeholder="New Password"
+                        required
+                        value={newPassword}
+                        onChange={(e) => setNewPassword(e.target.value)}
+                    />
+                </div>
+                <button className="change-password-button" onClick={handleChangePassword}>Change Password</button>
+            </div>
         </div>
     )
 }
