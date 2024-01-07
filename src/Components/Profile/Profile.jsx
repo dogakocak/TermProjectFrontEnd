@@ -10,7 +10,6 @@ const Profile = ({ onLogout }) => {
     useEffect(() => {
         const fetchUserProfile = async () => {
             try {
-                // Simülasyon amaçlı bir API çağrısı
                 const response = await fetch('https://localhost:7250/api/User/GetInformation', {
                     method: 'GET',
                     headers: {
@@ -29,15 +28,44 @@ const Profile = ({ onLogout }) => {
         fetchUserProfile();
     }, []); // Boş bağımlılık dizisi, sadece bir kere çağrılmasını sağlar
 
-    const handlePasswordChange = () => {
-        // Implement password change logic here
-        console.log('Old Password:', oldPassword);
-        console.log('New Password:', newPassword);
-        // You can make an API call to update the password or perform any other necessary actions
+    const handlePasswordChange = async () => {
+        fetch('https://localhost:7250/api/User/ChangePassword', {
+            method: 'POST',
+            headers: {
+                'Accept': '*/*',
+                'Authorization': `Bearer ${sessionStorage.getItem('accessToken')}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                oldPassword: oldPassword,
+                newPassword: newPassword,
+            }),
+        })
+            .then(response => response.json())
+            .then(data => {
+                showAlert(data.error.message, data.error.status == 200 ? 'success' : 'error');
+            })
+            .catch(error => {
+                console.error('API Request Error:', error);
+            });
+
+    };
+
+    const showAlert = (message, type) => {
+        const alertDiv = document.createElement('div');
+        alertDiv.className = `alert ${type}`;
+        alertDiv.innerHTML = message;
+
+        // Assuming you have a container element to hold your alerts
+        const alertContainer = document.getElementById('alert-container');
+        alertContainer.appendChild(alertDiv);
+
+        setTimeout(() => {
+            alertContainer.removeChild(alertDiv);
+        }, 2000);
     };
 
     if (!userProfile) {
-        // userProfile henüz yüklenmediyse, bir yükleniyor göstergesi veya başka bir şey gösterebilirsiniz
         return <p>Loading...</p>;
     }
 
@@ -88,6 +116,7 @@ const Profile = ({ onLogout }) => {
                             <button onClick={handlePasswordChange}>Şifre Değiştir</button>
                         </div>
                     </div>
+                    <div id="alert-container"></div>
                 </div>
             </div>
         </div>

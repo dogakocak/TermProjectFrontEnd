@@ -84,3 +84,8 @@
 .password-change-section button:hover {
     background-color: #45a049;
 }
+
+input[type='password'] {
+    font-family: Verdana;
+    letter-spacing: 0.125em
+}
