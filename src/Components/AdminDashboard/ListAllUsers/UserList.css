@@ -1,0 +1,35 @@
+/* UserList.css */
+.user-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-left: 500px;
+    margin-top: 20px/* Adjust margins as needed */
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 16px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+}
+
+.user span {
+    margin-right: 10px;
+}
+
+.user button {
+    padding: 12px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 6px;
+    margin-right: 6px;
+    background: #868686;
+}
+
+.user button :hover{
+    text-decoration: underline;
+}
