@@ -1,0 +1,129 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 25px;
+    width: 550px;
+    background: #163020;
+    border-radius: 40px;
+    padding-bottom: 25px;
+}
+
+.header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+    width: 100%;
+    margin-top: 25px;
+}
+
+.header img{
+    margin-bottom: 10px;
+    width: 220px;
+    height: 220px;
+}
+
+.text{
+    color: white;
+    font-size: 24px;
+}
+
+.underline{
+    width: 121px;
+    height: 6px;
+    background: white;
+    border-radius: 9px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+.inputs{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.input{
+    display: flex;
+    align-items: center;
+    margin: auto;
+    width: fit-content;
+    height: auto;
+    background: white;
+    border-radius: 6px;
+}
+
+.input img{
+    margin: 0px 20px;
+}
+
+.input input{
+    height: 50px;
+    width: 220px;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #044e4e;
+    font-size: 19px;
+    padding-left: 15px;
+}
+
+.submit{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 220px;
+    height: 59px;
+    color: white;
+    background: #A25772;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    border-radius: 40px;
+    cursor: pointer;
+}
+
+.submit:hover{
+    background-color: #602439;
+}
+
+.alert {
+    padding: 20px;
+    background-color: #f44336; /* Red */
+    color: white;
+    margin: 10px 50px;
+}
+
+/* The close button */
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+    color: black;
+}
+
+.underline-footer {
+    width: 200px;
+    height: 3px;
+    background: white;
+    border-radius: 9px;
+    margin: 25px auto 10px;
+}
+
+
+.footer-text {
+    color: white;
+    margin: auto;
+}
