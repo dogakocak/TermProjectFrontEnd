@@ -24,7 +24,7 @@ const Sidebar = ({ onLogout }) => {
             <Link to="/profile" className='profilebtn button'>
                 My Profile
             </Link>
-            <Link to="/" className='admin-panel button'>
+            <Link to="/admin-dashboard" className='admin-panel button'>
                 Admin Panel
             </Link>
             <div className='logout-container'>
