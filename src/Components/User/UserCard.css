@@ -37,7 +37,7 @@
 
 .card-content {
     text-align: center;
-    max-height: 100px; /* İçerik maksimum yüksekliği */
+    max-height: 150px; /* İçerik maksimum yüksekliği */
 }
 
 .edit-container,

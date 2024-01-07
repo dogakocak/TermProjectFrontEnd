@@ -39,6 +39,7 @@ function Card({ userData }) {
                 <div className='card-content'>
                     <h2>{userData.code}</h2>
                     <p>{userData.name}</p>
+                    <p>{userData.price} ₺</p>
                 </div>
                 <div className='delete-container'>
                     <div className='delete' onClick={handleDelete}>Delete</div>

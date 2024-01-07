@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import Cookies from 'js-cookie';
-import '../Homepage/Homepage.css';
 import './AddStock.css';
 import Sidebar from '../Homepage/Sidebar';
 import profile_photo from "../Assets/profile_photo_icon.svg";
