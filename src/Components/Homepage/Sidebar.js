@@ -1,10 +1,16 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import './Homepage.css';
 
 import LoginIcon from '../Assets/LoginIcon.png'
+import async from "async";
 
 const Sidebar = ({ onLogout }) => {
+
+    useEffect(() => {
+        console.log(sessionStorage.getItem('role'));
+    }, []);
+
     const handleLogout = () => {
         onLogout();
     }
@@ -24,9 +30,11 @@ const Sidebar = ({ onLogout }) => {
             <Link to="/profile" className='profilebtn button'>
                 My Profile
             </Link>
-            <Link to="/admin-dashboard" className='admin-panel button'>
-                Admin Panel
-            </Link>
+            {sessionStorage.getItem('role') !== null && sessionStorage.getItem('role') !== 'false' && (
+                <Link to="/admin-dashboard" className='admin-panel button'>
+                    Admin Panel
+                </Link>
+            )}
             <div className='logout-container'>
                 <div className='button' onClick={handleLogout}>
                     Logout

@@ -56,6 +56,8 @@ const Login = ({ onLogin }) => {
             } else {
                 Cookies.set('isLoggedIn', true);
                 sessionStorage.setItem('accessToken', data['accessToken']);
+
+                await checkRole();
                 navigate('/');
             }
         } catch (error) {
@@ -64,6 +66,29 @@ const Login = ({ onLogin }) => {
             setLoading(false); // İstek tamamlandığında loading durumunu false yap
         }
     };
+
+    const checkRole = async () => {
+        try {
+            const response = await fetch('https://localhost:7250/api/User/CheckAdmin', {
+                method: 'GET',
+                headers: {
+                    'Accept': '*/*',
+                    'Authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
+                }
+            });
+
+            if (response.ok) {
+                const responseData = await response.json(); // JSON formatına çevir
+                const boolResponse = responseData === true; // true veya false değerini elde et
+
+                sessionStorage.setItem('role',boolResponse);
+            } else {
+                console.log('HTTP error:', response.status);
+            }
+        } catch (error) {
+            console.error('Error during fetch:', error.message);
+        }
+    }
 
     const showAlert = (message, type) => {
         const alertDiv = document.createElement('div');
