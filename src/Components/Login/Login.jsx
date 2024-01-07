@@ -13,7 +13,6 @@ import {Link, useNavigate} from "react-router-dom";
 const Login = ( {onLogin}) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [message, setMessage] = useState('');
     const navigate = useNavigate();
 
 
@@ -51,6 +50,10 @@ const Login = ( {onLogin}) => {
         })
             .then(response => response.json())
             .then(data => {
+                if (data.status == 401){
+                    showAlert('Kullanıcı adı veya şifre yanlış', 'error');
+                    return;
+                }
                 Cookies.set('isLoggedIn', true);
                 sessionStorage.setItem('accessToken', data["accessToken"]);
                 navigate('/');
@@ -60,6 +63,20 @@ const Login = ( {onLogin}) => {
             });
 
 
+    };
+
+    const showAlert = (message, type) => {
+        const alertDiv = document.createElement('div');
+        alertDiv.className = `alert ${type}`;
+        alertDiv.innerHTML = message;
+
+        // Assuming you have a container element to hold your alerts
+        const alertContainer = document.getElementById('alert-container');
+        alertContainer.appendChild(alertDiv);
+
+        setTimeout(() => {
+            alertContainer.removeChild(alertDiv);
+        }, 2000);
     };
 
 
@@ -76,12 +93,7 @@ const Login = ( {onLogin}) => {
                 <div className='underline'></div>
                 <img src={login_icon} alt='Login Icon'/>
             </div>
-            {message && (
-                <div className='alert'>
-                    <span className='closebtn' onClick={() => setMessage('')}>&times;</span>
-                    {message}
-                </div>
-            )}
+            <div id="alert-container"></div>
             <div className='inputs'>
                 <div className='input'>
                     <input
@@ -118,7 +130,6 @@ const Login = ( {onLogin}) => {
                     Dont have an account? <Link to="/register">Register</Link>
                 </p>
             </div>
-
             <div className='underline-footer'></div>
             <div className='footer-text'>Doğa Koçak & Umut Mete</div>
         </div>

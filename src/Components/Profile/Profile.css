@@ -89,3 +89,8 @@ input[type='password'] {
     font-family: Verdana;
     letter-spacing: 0.125em
 }
+
+input[type='text'] {
+    font-family: Verdana;
+    letter-spacing: 0.125em
+}
