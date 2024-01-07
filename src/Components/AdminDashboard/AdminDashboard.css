@@ -1,0 +1,53 @@
+.AdminDashboard {
+    display: flex;
+    height: 100vh; /* 100 viewport height, yani ekranın tamamını kapla */
+}
+
+.ListUsers {
+    display: flex;
+    height: 100vh; /* 100 viewport height, yani ekranın tamamını kapla */
+}
+
+
+.AdminSidebar {
+    width: 300px;
+    background-color: #43766C;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 59px;
+    color: white;
+    background: #A25772;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    border-radius: 40px;
+    cursor: pointer;
+}
+
+.button:hover{
+    background-color: #602439;
+}
+
+.alert {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+.success {
+    background-color: #4CAF50; /* Yeşil renk */
+    color: white;
+}
+
+.error {
+    background-color: #f44336; /* Kırmızı renk */
+    color: white;
+}
+
