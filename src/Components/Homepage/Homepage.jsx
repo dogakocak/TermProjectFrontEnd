@@ -1,18 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import Cookies from 'js-cookie';
 import './Homepage.css';
-import search_icon from '../Assets/search_icon.svg';
 
 import Card from '../User/UserCard';
 import Sidebar from './Sidebar';
 
 const Homepage = ({ onLogout, bearerToken }) => {
     const [userData, setUserData] = useState([]);
-
-    const handleLogout = () => {
-        Cookies.set('isLoggedIn', false);
-        onLogout();
-    };
 
     useEffect(() => {
         // API'den veri çekme işlemi
@@ -43,7 +36,7 @@ const Homepage = ({ onLogout, bearerToken }) => {
 
     return (
         <div className='homepage-container'>
-            <Sidebar onLogout={handleLogout} />
+            <Sidebar onLogout={onLogout} />
             <div className='content'>
                 {userData.map((user) => (
                     <Card key={user.id} userData={user} />

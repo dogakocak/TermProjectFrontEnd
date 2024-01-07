@@ -12,11 +12,6 @@ const AddStock = ({ onLogout }) => {
     const navigate = useNavigate();
     const [searchResults, setSearchResults] = useState([]);
 
-    const handleLogout = () => {
-        Cookies.set('isLoggedIn', false);
-        onLogout();
-    };
-
     const handleAddStock = async () => {
         console.log("trigger");
         try {
@@ -124,7 +119,7 @@ const AddStock = ({ onLogout }) => {
 
     return (
         <div className='homepage-container'>
-            <Sidebar onLogout={handleLogout} />
+            <Sidebar onLogout={onLogout} />
             <div className='content'>
                 <div className='cards'>
                     <div id="alert-container"></div>

@@ -3,6 +3,8 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import Login from './Components/Login/Login';
 import Homepage from './Components/Homepage/Homepage';
 import AddStock from './Components/ManageContacts/AddStock';
+import Profile from './Components/Profile/Profile'
+import Cookies from "js-cookie";
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -13,7 +15,7 @@ function App() {
     };
 
     const handleLogout = () => {
-        // Çıkış yapıldığında bu fonksiyonu çağırabilirsin.
+        Cookies.set('isLoggedIn', false);
         setIsLoggedIn(false);
     };
 
@@ -24,6 +26,7 @@ function App() {
                 <>
                     <Route path="/" element={<Homepage onLogout={handleLogout} />} />
                     <Route path="/add-contact" element={<AddStock onLogout={handleLogout} />} />
+                    <Route path="/profile" element={<Profile onLogout={handleLogout} />} />
                 </>
             ) : (
                 <Route path="/*" element={<Navigate to="/login" />} />
