@@ -1,0 +1,4 @@
+.profile-container {
+    display: flex;
+    height: 100vh; /* 100 viewport height, yani ekranın tamamını kapla */
+}

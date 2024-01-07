@@ -1,7 +1,5 @@
-// Sidebar.js
 import React from 'react';
 import { Link } from 'react-router-dom';
-import search_icon from '../Assets/search_icon.svg';
 import './Homepage.css';
 
 import LoginIcon from '../Assets/LoginIcon.png'

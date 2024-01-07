@@ -3,12 +3,7 @@
     height: 100vh; /* 100 viewport height, yani ekranın tamamını kapla */
 }
 
-.sidebar {
-    width: 300px;
-    background-color: #43766C;
-    padding: 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-}
+
 
 .img img {
     height: 200px;

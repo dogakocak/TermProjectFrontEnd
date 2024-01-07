@@ -1,12 +1,14 @@
 import React from 'react';
 import Sidebar from "../Homepage/Sidebar";
-import Cookies from "js-cookie";
+import './Profile.css';
 
 const Profile = ({ onLogout }) => {
 
     return (
-        <div>
+        <div className='profile-container'>
             <Sidebar onLogout={onLogout} />
+            <div className='content'>
+            </div>
         </div>
     );
 };
