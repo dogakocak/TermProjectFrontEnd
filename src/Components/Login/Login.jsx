@@ -6,7 +6,7 @@ import login_icon from '../Assets/LoginIcon.png';
 
 
 import Cookies from 'js-cookie'
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 
 
@@ -74,7 +74,7 @@ const Login = ( {onLogin}) => {
             <div className='header'>
                 <div className='text'>Login to Stock App</div>
                 <div className='underline'></div>
-                <img src={login_icon} alt='Login Icon' />
+                <img src={login_icon} alt='Login Icon'/>
             </div>
             {message && (
                 <div className='alert'>
@@ -92,7 +92,7 @@ const Login = ( {onLogin}) => {
                         onKeyDown={handleEnterKeyPress}
                         autoComplete='off'
                     />
-                    <img src={user_icon} alt='User Icon' className='icon' />
+                    <img src={user_icon} alt='User Icon' className='icon'/>
                 </div>
                 <div className='input'>
                     <input
@@ -104,7 +104,7 @@ const Login = ( {onLogin}) => {
                         name='loginPassword'
                         autoComplete='off'
                     />
-                    <img src={password_icon} alt='Password Icon' className='icon' />
+                    <img src={password_icon} alt='Password Icon' className='icon'/>
                 </div>
             </div>
             <div className='submit-container'>
@@ -112,6 +112,11 @@ const Login = ( {onLogin}) => {
                     Login
                 </div>
 
+            </div>
+            <div className="register-link">
+                <p>
+                    Dont have an account? <Link to="/register">Register</Link>
+                </p>
             </div>
 
             <div className='underline-footer'></div>
