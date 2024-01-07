@@ -7,6 +7,7 @@ import Profile from './Components/Profile/Profile'
 import AdminDashboard from "./Components/AdminDashboard/AdminDashboard";
 import ListAllUsers from "./Components/AdminDashboard/ListAllUsers/ListAllUsers";
 import Cookies from "js-cookie";
+import Register from "./Components/Register/Register";
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -24,6 +25,7 @@ function App() {
     return (
         <Routes>
             <Route path="/login" element={<Login onLogin={handleLogin} />} />
+            <Route path="/register" element={<Register /> } />
             {isLoggedIn ? (
                 <>
                     <Route path="/" element={<Homepage onLogout={handleLogout} />} />
