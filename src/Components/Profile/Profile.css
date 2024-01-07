@@ -1,4 +1,46 @@
+/* Profile.css */
 .profile-container {
     display: flex;
-    height: 100vh; /* 100 viewport height, yani ekranın tamamını kapla */
+    height: 100vh;
 }
+
+.content {
+    flex: 1;
+    padding: 20px;
+    background-color: #1a1a1a; /* Koyu arka plan rengi */
+    color: #fff; /* Beyaz metin rengi */
+}
+
+.profile {
+    background-color: #2a2a2a; /* Koyu arka plan rengi */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.profile h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #fff; /* Beyaz başlık rengi */
+}
+
+.profile-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+}
+
+.profile-details div {
+    padding: 15px;
+    background-color: #333; /* Koyu içerik kutusu rengi */
+    border-radius: 8px;
+}
+
+.profile-details strong {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #fff; /* Beyaz metin rengi */
+}
+
+/* Diğer stillendirmeleri ve renkleri ihtiyacınıza göre ayarlayabilirsiniz */

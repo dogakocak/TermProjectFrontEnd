@@ -21,7 +21,7 @@ const Sidebar = ({ onLogout }) => {
             <Link to="/add-contact" className='add-container button'>
                 Add Stock
             </Link>
-            <Link to="/profile" className='profile button'>
+            <Link to="/profile" className='profilebtn button'>
                 My Profile
             </Link>
             <Link to="/" className='admin-panel button'>
